@@ -130,6 +130,7 @@
                      </Label>
                      <Label fx:id="author1Label" text="author1 placeholder" />
                      <Label fx:id="author2Label" text="author2 placeholder" />
+                     <Label fx:id="contributorLabel" text="%CONTRIBUTOR" />
                      <HBox.margin>
                         <Insets bottom="15.0" top="15.0" />
                      </HBox.margin>

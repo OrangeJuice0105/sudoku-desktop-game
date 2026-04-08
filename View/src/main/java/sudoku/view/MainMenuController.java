@@ -62,6 +62,9 @@ public class MainMenuController implements Initializable {
     @FXML
     public Button exitGameButton;
 
+    @FXML 
+    private Label contributorLabel;
+
     @FXML
     private void handleEasyDifficultyButton(ActionEvent event) {
         setDifficulty(DifficultyEnum.EASY);

@@ -5,7 +5,8 @@ import java.util.ResourceBundle;
 
 public enum LanguageEnum {
     ENGLISH("English"),
-    POLISH("Polski");
+    POLISH("Polski"),
+    VIETNAMESE("Tiếng Việt");
 
     private final String displayName;
     private static LanguageEnum selectedLanguage = null;
@@ -25,12 +26,13 @@ public enum LanguageEnum {
         }
 
         Locale locale = Locale.getDefault();
+        String language = locale.getLanguage();
 
-        if (locale.getLanguage().equals("pl")) {
-            return POLISH;
-        } else {
-            return ENGLISH;
-        }
+        return switch (language) {
+            case "pl" -> POLISH;
+            case "vi" -> VIETNAMESE;
+            default -> ENGLISH;
+        };
     }
 
     public static void setSelectedLanguage(LanguageEnum language) {
@@ -41,32 +43,31 @@ public enum LanguageEnum {
         LanguageEnum selectedLanguage = getSelectedLanguage();
 
         if (selectedLanguage != null) {
-            switch (selectedLanguage) {
-                case ENGLISH:
-                    return ResourceBundle.getBundle("sudoku.view.bundles.en_EN");
-                case POLISH:
-                    return ResourceBundle.getBundle("sudoku.view.bundles.pl_PL");
-                default:
-                    return null;
-            }
+            return switch (selectedLanguage) {
+                case ENGLISH -> ResourceBundle.getBundle("sudoku.view.bundles.en_EN");
+                case POLISH -> ResourceBundle.getBundle("sudoku.view.bundles.pl_PL");
+                case VIETNAMESE -> ResourceBundle.getBundle("sudoku.view.bundles.vi_VI");
+                default -> null;
+            };
         } else {
             // If no language is selected, use the default locale
             Locale locale = Locale.getDefault();
-            if (locale.getLanguage().equals("pl")) {
-                return ResourceBundle.getBundle("sudoku.view.bundles.pl_PL");
-            } else {
-                return ResourceBundle.getBundle("sudoku.view.bundles.en_EN");
-            }
+            String language = locale.getLanguage();
+
+            return switch (language) {
+                case "pl" -> ResourceBundle.getBundle("sudoku.view.bundles.pl_PL");
+                case "vi" -> ResourceBundle.getBundle("sudoku.view.bundles.vi_VI");
+                default -> ResourceBundle.getBundle("sudoku.view.bundles.en_EN");
+            };
         }
     }
 
     public static ResourceBundle getAuthorsResourceBundle() {
 
-        switch (getSelectedLanguage()) {
-            case POLISH:
-                return ResourceBundle.getBundle("sudoku.view.bundles.PolishAuthorsResourceBundle");
-            default:
-                return ResourceBundle.getBundle("sudoku.view.bundles.EnglishAuthorsResourceBundle");
-        }
+        return switch (getSelectedLanguage()) {
+            case POLISH -> ResourceBundle.getBundle("sudoku.view.bundles.PolishAuthorsResourceBundle");
+            case VIETNAMESE -> ResourceBundle.getBundle("sudoku.view.bundles.VietnameseAuthorsResourceBundle");
+            default -> ResourceBundle.getBundle("sudoku.view.bundles.EnglishAuthorsResourceBundle");
+        };
     }
 }
