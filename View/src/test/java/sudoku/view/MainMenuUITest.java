@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.control.LabeledMatchers.hasText;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
@@ -24,7 +25,7 @@ import org.testfx.framework.junit5.ApplicationTest;
 public class MainMenuUITest extends ApplicationTest {
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) throws IOException {
 
         ResourceBundle bundle = ResourceBundle.getBundle("sudoku.view.bundles.en_EN");
         ResourceBundle authorsBundle = ResourceBundle.getBundle("sudoku.view.bundles.EnglishAuthorsResourceBundle");
