@@ -23,7 +23,7 @@
          <children>
             <!-- Difficulty Level Label -->
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="602.0"
-               text="%DIFFICULTY_LEVEL">
+               fx:id="difficultyLabel" text="%DIFFICULTY_LEVEL">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -145,7 +145,7 @@
       <VBox alignment="CENTER" prefHeight="98.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="300.0"
-               text="%MENU_TITLE" textAlignment="CENTER">
+               fx:id="menuLabel" text="%MENU_TITLE" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
