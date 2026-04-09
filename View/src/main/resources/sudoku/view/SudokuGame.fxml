@@ -22,7 +22,7 @@
       </GridPane>
    </center>
    <top>
-      <Label contentDisplay="CENTER" text="Game View" textAlignment="CENTER"
+      <Label contentDisplay="CENTER" fx:id="gameViewLabel" text="Game View" textAlignment="CENTER"
          BorderPane.alignment="CENTER">
          <font>
             <Font size="20.0" />
