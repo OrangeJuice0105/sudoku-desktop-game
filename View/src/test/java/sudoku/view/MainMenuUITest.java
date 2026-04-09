@@ -78,17 +78,13 @@ public class MainMenuUITest extends ApplicationTest {
     @ParameterizedTest
     @ValueSource(strings = {"en_EN", "pl_PL", "vi_VI"})
     void testLocalizationForLocale(String localeString) {
-        // This test would need to restart the application with a different bundle
-        // For now, we'll test that the bundle keys exist and are accessible
         String bundleName = "sudoku.view.bundles." + localeString;
         ResourceBundle bundle = ResourceBundle.getBundle(bundleName);
         
-        // Verify key translations exist
         assertFalse(bundle.getString("MENU_TITLE").isEmpty());
         assertFalse(bundle.getString("DIFFICULTY_LEVEL").isEmpty());
         assertFalse(bundle.getString("START_GAME").isEmpty());
         
-        // Verify translations are different between locales
         ResourceBundle englishBundle = ResourceBundle.getBundle("sudoku.view.bundles.en_EN");
         if (!localeString.equals("en_EN")) {
             assertNotEquals(englishBundle.getString("MENU_TITLE"), bundle.getString("MENU_TITLE"));
@@ -97,7 +93,7 @@ public class MainMenuUITest extends ApplicationTest {
 
     @Test
     void testBundleKeysArePresent() {
-        // Test that all expected keys exist in the default bundle
+        
         ResourceBundle bundle = ResourceBundle.getBundle("sudoku.view.bundles.en_EN");
         
         List<String> requiredKeys = List.of(
